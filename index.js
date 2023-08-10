@@ -1,3 +1,551 @@
+//LET, VAR & CONST://
+
+const pi = 3.14159;
+console.log("Question Num 01:");
+console.log(pi); // Output: 3.14159
+// Attempting to reassign pi will result in an error
+pi = 3.14; 
+
+/////////////
+
+function squares(numbers){
+     let sum = 0;
+for(const num of numbers){
+    const squared = num **2;
+    sum += squared;
+}
+if (sum > 100) {
+    var message = "Sum is greater than 100"; // Declared using var in the if block scope
+  }
+   return sum;
+}
+const numbersArray = [1, 2, 3, 4, 5];
+const output = sumOfSquares(numbersArray);
+console.log("Question Num 02:");
+console.log(output); 
+console.log(message); 
+
+////////////////////////////
+
+const stringArray = ["Strawberry","Cherry","Watermelon","grapes"];
+for(let i=0;i<stringArray.length;i++){
+   const firstLetter = stringArray[i][0];
+console.log("Question Num 03:");
+   console.log(firstLetter);
+}
+
+//////////////////////
+
+function generateGreeting(person) {
+    var message; 
+    if (person.name && person.age) {
+      message = `Hello, ${person.name}! You are ${person.age} years old.`;
+    }
+    else {
+      message = "Invalid input. Please provide both name and age.";
+    }
+   return message;
+  }
+   const personInfo = {
+    name: "Ayesha",
+    age: 21
+  };
+    const greetingMessages = generateGreeting(personInfo);
+console.log("Question Num 04:");
+  console.log(greetingMessages); 
+
+///////////////////////////////
+
+  function findMaxValue(numbers) {
+    if (numbers.length === 0) {
+      return undefined; 
+    }
+  let max = Math.max(...numbers); 
+  return max;
+  }
+  const numArray = [15, 8, 23, 54, 10];
+  const maxValue = findMaxValue(numArray);
+console.log("Question Num 05:");
+  console.log(maxValue); // Output: 54
+  
+//////////////////////////////
+
+  //Template Strings
+  function greetPerson(name, age) {
+  return `Hello, ${name}! You are ${age} years old.`;
+}
+const personName = "John";
+const personAge = 30;
+const greetingMessage = greetPerson(personName, personAge);
+console.log("Question Num 01:");
+console.log(greetingMessage);
+
+////////////////////////////
+
+function calculateSumAndAverage(numbers) {
+  if (numbers.length === 0) {
+    return "The array is empty.";
+  }
+ const sum = numbers.reduce((acc, num) => acc + num, 0);
+  const average = sum / numbers.length;
+  return `Sum: ${sum}, Average: ${average.toFixed(2)}`;
+}
+const numberArray = [10, 20, 30, 40, 50];
+const answer = calculateSumAndAverage(numberArray);
+console.log("Question Num 02:");
+console.log(answer);
+
+////////////////////
+
+function createHTMLElement(tagName, text) {
+  return `<${tagName}>${text}</${tagName}>`;
+}
+const tagName = "h1";
+const content = "Hello, World!";
+const htmlElement = createHTMLElement(tagName, content);
+console.log("Question Num 03:");
+console.log(htmlElement);
+
+////////////////////////////
+
+function getProductInfo(product) {
+  const { name, price, quantity } = product;
+  const totalPrice = price * quantity;
+  return `Product: ${name}, Price: $${price.toFixed(2)}, Quantity: ${quantity}, Total Price: $${totalPrice.toFixed(2)}`;
+}
+const productInfo = {
+  name: "Widget",
+  price: 9.99,
+  quantity: 3
+};
+const result = getProductInfo(productInfo);
+console.log("Question Num 04:");
+console.log(result);
+
+//////////////////////////////
+
+function formatDate(date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+const inputDate = new Date(); 
+const formattedDate = formatDate(inputDate);
+console.log("Question Num 05:");
+console.log(formattedDate);
+
+///////////////////
+
+//DESTRUCTING://
+function sumTwoNumbers(numbers) {
+  const [num1, num2] = numbers;
+  return num1 + num2;
+}
+const numbArray = [5, 10];
+const  arrayDestructuring  = sumTwoNumbers(numbArray);
+console.log("Question Num 01:");
+console.log( arrayDestructuring );
+
+/////////////////////////////
+
+function getPersonInfo(person) {
+  const { name, age, occupation } = person;
+  return `Name: ${name}, Age: ${age}, Occupation: ${occupation}`;
+}
+const personObject = {
+  name: "Ayesha",
+  age: 21,
+  occupation: "Engineer"
+};
+const info = getPersonInfo(personObject);
+console.log("Question Num 02:");
+console.log(info);
+
+////////////////////////////////
+
+function getHighestScorerName(scoresArray) {
+  const [firstPerson, ...restOfPersons] = scoresArray;
+  let highestScore = firstPerson.score;
+  let highestScorerName = firstPerson.name;
+for (const person of restOfPersons) {
+    if (person.score > highestScore) {
+      highestScore = person.score;
+      highestScorerName = person.name;
+    }
+  }
+  return highestScorerName;
+}
+const scores1 = [
+  { name: "Alice", score: 85 },
+  { name: "Bob", score: 92 },
+  { name: "Charlie", score: 78 },
+  { name: "David", score: 95 }
+];
+const highestScorer = getHighestScorerName(scores1);
+console.log("Question Num 03:");
+console.log(highestScorer);
+
+///////////////////////////
+
+function getInitials(person) {
+  const { firstName = '', middleName = '', lastName = '' } = person;
+  const initials = (firstName.charAt(0) + middleName.charAt(0) + lastName.charAt(0)).toUpperCase();
+  return initials;
+}
+const personInformation = {
+  firstName: "John",
+  middleName: "Michael",
+  lastName: "Doe"
+};
+const initials = getInitials(personInformation);
+console.log("Question Num 04:");
+console.log(initials);
+
+///////////////////////////
+
+function getFirstAndLast(arr) {
+  const [first, ...rest] = arr;
+  const last = rest.pop();
+  return { first, last };
+}
+const fruitArray = ["apple", "banana", "cherry", "date"];
+const solve = getFirstAndLast(fruitArray);
+console.log("Question Num 05:");
+console.log(solve);
+
+///////////////////
+
+//DEFAULT, REST & SPREAD:
+function addNumbers(a = 0, b = 0) {
+  return a + b;
+}
+
+const answer1 = addNumbers();          
+const answer2 = addNumbers(5);         
+const answer3 = addNumbers(5, 10);    
+console.log("Question Num 01:");
+console.log(answer1); 
+console.log(answer2); 
+console.log(answer3);
+
+/////////////////////
+
+function collectArguments(...args) {
+  return args;
+}
+const result1 = collectArguments(1, 2, 3);
+const result2 = collectArguments("a", "b", "c", "d");
+const result3 = collectArguments(true, false);
+console.log("Question Num 02:");
+console.log(result1); // [1, 2, 3]
+console.log(result2); // ["a", "b", "c", "d"]
+console.log(result3); // [true, false]
+
+/////////////////////////
+
+function findMaxValue(numbers) {
+  return Math.max(...numbers);
+}
+const numbers1 = [10, 5, 8, 15, 3];
+const maximumValue = findMaxValue(numbers1);
+console.log("Question Num 03:");
+console.log(maximumValue); // 15
+
+/////////////////////////
+
+function concatenateArrays(array1, array2) {
+  return [...array1, ...array2];
+}
+const arrayA = [1, 2, 3];
+const arrayB = [4, 5, 6];
+const concatenatedArray = concatenateArrays(arrayA, arrayB);
+console.log("Question Num 04:");
+console.log(concatenatedArray)
+
+/////////////////////////////
+
+function addIdToObject(person) {
+  const newPerson = {
+    ...person,
+    id: Math.floor(Math.random() * 1000)  };
+  return newPerson;
+}
+const person9 = {
+  name: "Alice",
+  age: 30,
+  occupation: "Engineer"
+};
+const personWithId = addIdToObject(person9);
+console.log("Question Num 05:");
+console.log(personWithId);
+
+////////////////////////
+
+//ARROW FUNCTIONS://
+const getStringLength = (str) => str.length;
+const inputString = "Hello, World!";
+const length = getStringLength(inputString);
+console.log("Question Num 02:");
+console.log(length); 
+
+////////////////////////
+
+const getProduct = (num1, num2) => num1 * num2;
+const number1 = 5;
+const number2 = 10;
+const product1 = getProduct(number1, number2);
+console.log("Question Num 03:");
+console.log(product1);
+
+//////////////////
+
+const calculateAverage = (numbers) => {
+  if (numbers.length === 0) {
+    return 0;
+  }
+ const sum = numbers.reduce((acc, num) => acc + num, 0);
+  const average = sum / numbers.length;
+  return average;
+};
+const array = [10, 20, 30, 40, 50];
+const average = calculateAverage(array);
+console.log("Question Num 04:");
+console.log(average); // Output: 30
+
+/////////////////////
+
+const greet = (name) => `Hello, ${name}!`;
+const personname = "Alice";
+const Message = greet(personname);
+console.log("Question Num 05:");
+console.log(Message); 
+
+//////////////////
+
+const getRandomNumber = () => Math.random();
+const randomValue = getRandomNumber();
+console.log("Question Num 06:");
+console.log(randomValue); 
+
+///////////////////////
+
+//Promises://
+function calculateSquareAsync(number) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (typeof number !== 'number') {
+        reject(new Error('Input is not a number'));
+      } else {
+        const square = number * number;
+        resolve(square);
+      }
+    }, 1000);
+  });
+}
+const inputNumber = 5;
+calculateSquareAsync(inputNumber)
+  .then(result => {
+console.log("Question Num 01:");
+    console.log(`Square of ${inputNumber} is: ${result}`);
+  })
+  .catch(error => {
+    console.error(`Error: ${error.message}`);
+  });
+
+  /////////////////////
+
+  function resolveAll(promisesArray) {
+    return Promise.all(promisesArray);
+  }
+  const promise1 = Promise.resolve(10);
+  const promise2 = new Promise((resolve) => setTimeout(() => resolve(20), 1000));
+  const promise3 = Promise.resolve(30);
+  const promisesArray = [promise1, promise2, promise3];
+  resolveAll(promisesArray)
+    .then(results => {
+console.log("Question Num 02:");
+      console.log(results); // Output: [10, 20, 30]
+    })
+    .catch(error => {
+      console.error(`Error: ${error}`);
+    });
+    
+/////////////////////
+
+function fetchAndParseJSON(url) {
+    return fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.status}`);
+        }
+        return response.json();
+      });
+  }
+  const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+   fetchAndParseJSON(apiUrl)
+    .then(data => {
+console.log("Question Num 03:");
+      console.log(data);
+    })
+    .catch(error => {
+      console.error(`Error: ${error}`);
+    });
+ 
+    ////////////////
+
+  function summationOfResolvedValues(promise1, promise2) {
+    return Promise.all([promise1, promise2])
+      .then(([value1, value2]) => value1 + value2);
+  }
+  const promiseA = Promise.resolve(10);
+  const promiseB = new Promise((resolve) => setTimeout(() => resolve(20), 1000));
+  summationOfResolvedValues(promiseA, promiseB)
+    .then(sum => {
+console.log("Question Num 04:");
+      console.log(sum); // Output: 30
+    })
+    .catch(error => {
+      console.error(`Error: ${error}`);
+    });
+  
+    /////////////////////////
+
+  function promiseWithTimeout(promise, timeout) {
+    const timeoutPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error(`Promise did not resolve within ${timeout} milliseconds`));
+      }, timeout);
+    });
+  
+    return Promise.race([promise, timeoutPromise]);
+  }
+  const originalPromise = new Promise((resolve) => setTimeout(() => resolve("Resolved value"), 2000));
+  const timeoutMilliseconds = 1500;
+   promiseWithTimeout(originalPromise, timeoutMilliseconds)
+    .then(result => {
+console.log("Question Num 05:");
+      console.log(result);
+    })
+    .catch(error => {
+      console.error(`Error: ${error}`);
+    });
+  
+////////////////////////////
+
+  const startCountingPromise = new Promise((resolve) => {
+    resolve("Start Counting");
+  });
+console.log("Question Num 06:");
+  function counter(value) {
+    console.log(value);
+  }
+  startCountingPromise
+    .then(counter)
+    .then(() => 1)
+    .then(counter)
+    .then(() => 2)
+    .then(counter)
+    .then(() => 3)
+    .then(counter)
+    .catch(error => {
+      console.error(`Error: ${error}`);
+    });
+  
+//////////////////
+
+//Map://
+function mapToSquares(numbers) {
+  const squareMap = new Map();
+  numbers.forEach(number => {
+    squareMap.set(number, number * number);
+  });
+  return squareMap;
+}
+const num = [1, 2, 3, 4, 5];
+const squareMap = mapToSquares(num);
+console.log("Question Num 01:");
+squareMap.forEach((square, number) => {
+  console.log(`${number} squared is ${square}`);
+});
+
+/////////////////////////
+
+function createNameToAgeMap(persons) {
+  const nameToAgeMap = new Map();
+  persons.forEach(person => {
+    nameToAgeMap.set(person.name, person.age);
+  });
+  return nameToAgeMap;
+}
+const personsArray = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 22 }
+];
+console.log("Question Num 02:");
+const nameToAgeMap = createNameToAgeMap(personsArray);
+nameToAgeMap.forEach((age, name) => {
+  console.log(`${name} is ${age} years old`);
+});
+
+//////////////////////
+
+function containsKey(map, key) {
+  return map.has(key);
+}
+const myMap = new Map();
+myMap.set("name", "Alice");
+myMap.set("age", 25);
+myMap.set("occupation", "Engineer");
+const keyToCheck = "age";
+const hasKey = containsKey(myMap, keyToCheck);
+console.log("Question Num 03:");
+console.log(`The map contains the key "${keyToCheck}": ${hasKey}`);
+
+//////////////////
+
+function filterMap(map, callback) {
+  const filteredMap = new Map();
+  map.forEach((value, key) => {
+    if (callback(value, key)) {
+      filteredMap.set(key, value);
+    }
+  });
+  return filteredMap;
+}
+const myMapp = new Map();
+myMapp.set("Alice", 25);
+myMapp.set("Bob", 30);
+myMapp.set("Charlie", 22);
+const ageThreshold = 25;
+const filteredAgeMap = filterMap(myMap, (age) => age >= ageThreshold);
+filteredAgeMap.forEach((age, name) => {
+console.log("Question Num 04:");
+  console.log(`${name} is ${age} years old`);
+});
+
+////////////////////////
+
+function mergeMaps(map1, map2) {
+  const mergedMap = new Map([...map1, ...map2]);
+  return mergedMap;
+}
+console.log("Question Num 05:");
+const mapA = new Map();
+mapA.set("name", "Alice");
+mapA.set("age", 25);
+const mapB = new Map();
+mapB.set("age", 30);
+mapB.set("occupation", "Engineer");
+const mergedMap = mergeMaps(mapA, mapB);
+mergedMap.forEach((value, key) => {
+  console.log(`${key}: ${value}`);
+});
+
+/////////////////
+
+//CLASSES://
 class Person {
   constructor(firstName, lastName) {
     this.firstName = firstName;
